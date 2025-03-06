@@ -16,6 +16,7 @@ import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 
 import java.io.IOException;
+import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -99,7 +100,7 @@ public class MessengerService extends Service {
                         for (int i = 0; i<20; i++) {
                             DoryProcess p = new DoryProcess("/system/bin/top");
                             try {
-                                Random random = new Random();
+                                Random random = new SecureRandom();
                                 final int pid = p.start(random.nextInt(10) * 1000 * 10);
                                 p.setOnExitListener(new DoryPuppy.ExitListener() {
                                     @Override
